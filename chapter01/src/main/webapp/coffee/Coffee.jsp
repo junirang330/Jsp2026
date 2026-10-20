@@ -7,18 +7,26 @@
 <title>커피</title>
 </head>
 <body>
+<form action = "CoffeeProc.jsp" method="post">
 	<h1>커피 메뉴</h1>
-	<input type = "radio" name = "coffee_type" value = "아메리카노" id = "ame"/>
+	<input type = "radio" name = "type" value = "아메리카노" id = "ame"/>
 	<label for = "ame">아메리카노 (3000원)</label><br/>
-	<input type = "radio" name = "coffee_type" value = "카페라떼" id = "latte"/>
+	<input type = "radio" name = "type" value = "카페라떼" id = "latte"/>
 	<label for = "latte">카페라떼 (3300원)</label><br/>
-	<input type = "radio" name = "coffee_type" value = "에스프레소" id = "espresso"/>
+	<input type = "radio" name = "type" value = "에스프레소" id = "espresso"/>
 	<label for = "espresso">에스프레소 (2500원)</label><br/>
-	<input type = "radio" name = "coffee_type" value = "얼그레이티" id = "tea"/>
+	<input type = "radio" name = "type" value = "얼그레이티" id = "tea"/>
 	<label for = "tea">얼그레이티 (3500원)</label><br/>
 	
-	<label for = "num">수량 :</label>
-	<input type = "number" id = "num" name = "number"/><br/>
+	<label for = "quantity">수량 :</label>
+	<input type = "number" id = "quantity" name = "quantity"/><br/>
+	
+	<label for = "money">입금액 :</label>
+	<input type = "number" id = "money" name = "money"/>
+	<input type = "submit" value = "주문처리"/>
+</form>
+	
+
 	
 	
 </body>

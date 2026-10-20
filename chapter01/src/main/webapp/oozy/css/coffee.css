@@ -1,0 +1,386 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+body {
+	font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+	color: #333;
+	background-color: #fdfcf7; /* menuInsertProc.jsp 단독 이동 시에도 아이보리 배경 유지 */
+}
+
+/* ==========================================
+   1. 상단 헤더(로고) & 네비게이션(메뉴)
+   ========================================== */
+header {
+	float: left;
+	width: 50%;
+	height: 80px;
+	line-height: 80px;
+	padding-left: 8%;
+	background-color: #ffffff;
+}
+
+header h1, header a {
+	color: #1d4d3e;
+	font-size: 28px;
+	font-weight: 800;
+	letter-spacing: 0.5px;
+}
+
+nav {
+	float: right;
+	width: 50%;
+	height: 80px;
+	line-height: 80px;
+	padding-right: 8%;
+	background-color: #ffffff;
+}
+
+nav ul {
+	display: flex;
+	justify-content: flex-end;
+	gap: 45px;
+}
+
+nav ul li a {
+	font-size: 15px;
+	color: #333;
+	font-weight: 500;
+}
+
+/* ==========================================
+   2. 메인 컨텐츠 공통 영역 (section & home.jsp)
+   ========================================== */
+section {
+	clear: both;
+	background-color: #fdfcf7;
+	min-height: 800px;
+	padding: 50px 20px 80px;
+	text-align: center;
+	border-top: 1px solid #cccccc;
+}
+
+/* home.jsp & menuInsertProc.jsp 공통 h2 타이틀 */
+h2 {
+	font-size: 24px;
+	font-weight: 800;
+	color: #111111;
+	margin-top: 30px;
+	margin-bottom: 28px;
+	text-align: center;
+	letter-spacing: -0.5px;
+}
+
+section > p {
+	font-size: 16px;
+	color: #444444;
+	line-height: 1.9;
+}
+
+section > p b {
+	color: #111111;
+	font-weight: 700;
+}
+
+/* ==========================================
+   3. 메뉴조회 (menuList.jsp) 스타일
+   ========================================== */
+section ul.menu {
+	display: flex;
+	max-width: 960px;
+	margin: 0 auto 50px;
+	background-color: #ecebe4;
+}
+
+section ul.menu li {
+	flex: 1;
+}
+
+section ul.menu li a {
+	display: block;
+	padding: 13px 0;
+	font-size: 12px;
+	font-weight: 600;
+	color: #555555;
+	text-align: center;
+}
+
+section ul.menu li a.on {
+	background-color: #213029;
+	color: #ffffff;
+	font-weight: 700;
+}
+
+section ul.menu + ul {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 1050px;
+	margin: 0 auto;
+	row-gap: 45px;
+}
+
+section ul.menu + ul > li {
+	width: 20%;
+	padding: 0 10px;
+}
+
+.card {
+	position: relative;
+	text-align: center;
+}
+
+.card img {
+	height: 190px;
+	width: auto;
+	object-fit: contain;
+	margin-bottom: 15px;
+}
+
+.card .menu_name {
+	font-size: 13px;
+	font-weight: 800;
+	color: #222222;
+	margin-bottom: 6px;
+	letter-spacing: -0.5px;
+}
+
+.card .description {
+	font-size: 11px;
+	color: #888888;
+	line-height: 1.4;
+	width: 145px;
+	margin: 0 auto;
+	word-break: keep-all;
+}
+
+.card .out {
+	position: absolute;
+	top: 130px;
+	right: 18px;
+	width: 44px;
+	height: 44px;
+	border: 1.5px solid #555555;
+	border-radius: 50%;
+	background-color: #ffffff;
+	color: #444444;
+	font-size: 8px;
+	font-weight: 700;
+	text-transform: uppercase;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	line-height: 1.15;
+	padding: 4px;
+}
+
+/* ==========================================
+   4. 메뉴등록 (menuInsert.jsp) - 테이블 모양 구현
+   ========================================== */
+   
+   .enrollment{
+   	width: 460px;
+   	height: 600px;
+   	margin: 0 auto;
+   	display: flex;
+   	border-collapse: collapse;
+   }
+   .enrollment td{
+   	border: 1px solid black;
+   }
+   
+/* form {
+	width: 460px;
+	margin: 0 auto;
+	display: grid;
+	오른쪽 칸 비율을 1fr로 주어 깔끔하게 채우기
+	grid-template-columns: 95px 15px 65px 15px 1fr;
+	align-items: center;
+	background: linear-gradient(to right, #dfddd2 0px, #dfddd2 95px, #a0a0a0 95px, #a0a0a0 96px, #efeee6 96px, #efeee6 100%);
+	border: 1px solid #a0a0a0;
+	position: relative;
+	margin-top: 55px;
+}
+
+줄바꿈(<br/>) 태그가 그리드 배치를 방해하지 않도록 숨김
+form br {
+	display: none;
+}
+
+'메뉴등록' 제목을 표 바깥 위쪽 중앙으로 배치
+form h3 {
+	position: absolute;
+	top: -50px;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	font-size: 22px;
+	font-weight: 800;
+	color: #111111;
+}
+
+왼쪽 항목 이름 (메뉴명, 분류, 가격, 판매상태, 설명)
+form > label:not([for="sale"]):not([for="season_out"]) {
+	grid-column: 1 / 2;
+	font-size: 13px;
+	font-weight: 700;
+	color: #333333;
+	text-align: center;
+	padding: 12px 0;
+	border-bottom: 1px solid #a0a0a0;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+오른쪽 입력칸들 (메뉴명, 분류, 가격, 설명)
+#menuName,
+form select,
+#menuPrice,
+#menuDesc {
+	grid-column: 2 / 6;
+	margin: 7px 12px;
+	padding: 4px 6px;
+	border: 1px solid #777777;
+	background-color: #ffffff;
+	font-size: 13px;
+}
+
+각 행의 가로 구분선 만들기 (라벨 바로 옆 영역들)
+기존의 #menuName, #menuPrice 부분을 아래 코드로 변경
+#menuName,
+#menuPrice {
+	grid-column: 2 / 6;
+	margin: 7px 12px;
+	padding: 4px 6px;
+	border: 1px solid #777777;
+	background-color: #ffffff;
+	font-size: 13px;
+	width: 210px;
+	box-shadow 속성을 완전히 제거하여 겹치는 선 없애기
+}
+
+form select {
+	width: 130px;
+}
+
+행 구분선 (오른쪽 칸의 바닥 테두리)
+form > label:not([for="sale"]):not([for="season_out"])::after {
+	content: "";
+	position: absolute;
+	left: 95px;
+	right: 0;
+	height: 1px;
+	background-color: #a0a0a0;
+	align-self: flex-end;
+}
+
+라디오 버튼 (판매중 / SEASON OUT) 한 줄 배치
+#sale {
+	grid-column: 2 / 3;
+	justify-self: end;
+	margin-right: 4px;
+}
+
+label[for="sale"] {
+	grid-column: 3 / 4;
+	font-size: 13px;
+	text-align: left;
+}
+
+#season_out {
+	grid-column: 4 / 5;
+	justify-self: end;
+	margin-right: 4px;
+}
+
+label[for="season_out"] {
+	grid-column: 5 / 6;
+	font-size: 13px;
+	text-align: left;
+}
+
+설명 입력칸 (큰 텍스트 박스처럼 높이 키우기)
+#menuDesc {
+	width: 310px;
+	height: 85px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+하단 메뉴등록 버튼 영역 (표의 맨 아랫줄)
+form input[type="submit"] {
+	grid-column: 1 / 6;
+	justify-self: center;
+	padding: 3px 10px;
+	margin: 8px 0;
+	font-size: 12px;
+	background-color: #f0f0f0;
+	border: 1px solid #777777;
+	cursor: pointer;
+	맨 아랫줄은 왼쪽/오른쪽 칸 구분 없이 통짜 배경이 되도록 덮어씌움
+	box-shadow: 0 0 0 200px #efeee6;
+	clip-path: inset(-8px -200px -8px -200px);
+} */
+
+
+/* ==========================================
+   5. 메뉴등록 확인 (menuInsertProc.jsp - table.certify)
+   ========================================== */
+table.certify {
+	width: 260px;
+	margin: 0 auto;
+	border-collapse: collapse; /* 테두리 한 줄로 합치기 */
+	border: 1px solid #a0a0a0;
+	font-size: 13px;
+}
+
+table.certify tr {
+	border-bottom: 1px solid #a0a0a0;
+}
+
+table.certify td {
+	padding: 9px 12px;
+	border-right: 1px solid #a0a0a0;
+	text-align: center;
+}
+
+/* 왼쪽 항목 열 (메뉴명, 분류, 가격, 판매상태, 설명) */
+table.certify td:first-child {
+	width: 95px;
+	background-color: #dfddd2; /* 베이지회색 배경 */
+	font-weight: 700;
+	color: #333333;
+}
+
+/* 오른쪽 결과값 열 */
+table.certify td:last-child {
+	background-color: #ffffff; /* 흰색 배경 */
+	color: #333333;
+}
+
+/* ==========================================
+   6. 하단 푸터 (footer.jsp)
+   ========================================== */
+footer {
+	clear: both;
+	background-color: #213029;
+	color: #dcdcdc;
+	padding: 45px 8%;
+	font-size: 13px;
+	line-height: 1.8;
+}

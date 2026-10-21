@@ -190,153 +190,101 @@ section ul.menu + ul > li {
 /* ==========================================
    4. 메뉴등록 (menuInsert.jsp) - 테이블 모양 구현
    ========================================== */
-   
-   .enrollment{
-   	width: 460px;
-   	height: 600px;
-   	margin: 0 auto;
-   	display: flex;
-   	border-collapse: collapse;
-   }
-   .enrollment td{
-   	border: 1px solid black;
-   }
-   
-/* form {
-	width: 460px;
-	margin: 0 auto;
-	display: grid;
-	오른쪽 칸 비율을 1fr로 주어 깔끔하게 채우기
-	grid-template-columns: 95px 15px 65px 15px 1fr;
-	align-items: center;
-	background: linear-gradient(to right, #dfddd2 0px, #dfddd2 95px, #a0a0a0 95px, #a0a0a0 96px, #efeee6 96px, #efeee6 100%);
-	border: 1px solid #a0a0a0;
-	position: relative;
-	margin-top: 55px;
-}
-
-줄바꿈(<br/>) 태그가 그리드 배치를 방해하지 않도록 숨김
-form br {
-	display: none;
-}
-
-'메뉴등록' 제목을 표 바깥 위쪽 중앙으로 배치
 form h3 {
-	position: absolute;
-	top: -50px;
-	left: 0;
-	width: 100%;
-	text-align: center;
 	font-size: 22px;
 	font-weight: 800;
 	color: #111111;
+	margin-bottom: 25px;
+	text-align: center;
 }
 
-왼쪽 항목 이름 (메뉴명, 분류, 가격, 판매상태, 설명)
-form > label:not([for="sale"]):not([for="season_out"]) {
-	grid-column: 1 / 2;
+table.enrollment {
+	width: 460px;
+	margin: 0 auto;
+	border-collapse: collapse; /* 표 테두리 한 줄로 합치기 (display: flex는 제거!) */
+	border: 1px solid #a0a0a0;
+	background-color: #efeee6; /* 오른쪽 칸 기본 연베이지 배경 */
 	font-size: 13px;
+}
+
+table.enrollment tr {
+	border-bottom: 1px solid #a0a0a0;
+}
+
+table.enrollment td {
+	padding: 8px 12px;
+	border: 1px solid #a0a0a0;
+	vertical-align: middle;
+}
+
+/* 왼쪽 제목 칸 (메뉴명, 분류, 가격, 판매상태, 설명) */
+table.enrollment tr:not(:last-child) td:first-child {
+	width: 95px;
+	background-color: #dfddd2; /* 진한 베이지회색 배경 */
 	font-weight: 700;
 	color: #333333;
 	text-align: center;
-	padding: 12px 0;
-	border-bottom: 1px solid #a0a0a0;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 }
 
-오른쪽 입력칸들 (메뉴명, 분류, 가격, 설명)
+/* 오른쪽 입력 칸 (왼쪽 정렬) */
+table.enrollment td:nth-child(2) {
+	text-align: left;
+}
+
+/* 텍스트 입력창 & 셀렉트 박스 공통 테두리 */
 #menuName,
-form select,
+table.enrollment select,
 #menuPrice,
 #menuDesc {
-	grid-column: 2 / 6;
-	margin: 7px 12px;
 	padding: 4px 6px;
 	border: 1px solid #777777;
 	background-color: #ffffff;
 	font-size: 13px;
 }
 
-각 행의 가로 구분선 만들기 (라벨 바로 옆 영역들)
-기존의 #menuName, #menuPrice 부분을 아래 코드로 변경
+/* 개별 입력창 너비 맞춤 */
 #menuName,
 #menuPrice {
-	grid-column: 2 / 6;
-	margin: 7px 12px;
-	padding: 4px 6px;
-	border: 1px solid #777777;
-	background-color: #ffffff;
-	font-size: 13px;
 	width: 210px;
-	box-shadow 속성을 완전히 제거하여 겹치는 선 없애기
 }
 
-form select {
+table.enrollment select {
 	width: 130px;
 }
 
-행 구분선 (오른쪽 칸의 바닥 테두리)
-form > label:not([for="sale"]):not([for="season_out"])::after {
-	content: "";
-	position: absolute;
-	left: 95px;
-	right: 0;
-	height: 1px;
-	background-color: #a0a0a0;
-	align-self: flex-end;
-}
-
-라디오 버튼 (판매중 / SEASON OUT) 한 줄 배치
+/* 판매상태 라디오 버튼 간격 */
 #sale {
-	grid-column: 2 / 3;
-	justify-self: end;
 	margin-right: 4px;
 }
 
 label[for="sale"] {
-	grid-column: 3 / 4;
-	font-size: 13px;
-	text-align: left;
+	margin-right: 15px;
 }
 
 #season_out {
-	grid-column: 4 / 5;
-	justify-self: end;
 	margin-right: 4px;
 }
 
-label[for="season_out"] {
-	grid-column: 5 / 6;
-	font-size: 13px;
-	text-align: left;
-}
-
-설명 입력칸 (큰 텍스트 박스처럼 높이 키우기)
+/* 설명 입력창 (넓직한 텍스트박스 크기) */
 #menuDesc {
 	width: 310px;
 	height: 85px;
-	margin-top: 10px;
-	margin-bottom: 10px;
 }
 
-하단 메뉴등록 버튼 영역 (표의 맨 아랫줄)
-form input[type="submit"] {
-	grid-column: 1 / 6;
-	justify-self: center;
-	padding: 3px 10px;
-	margin: 8px 0;
+/* 맨 아랫줄 (enroll 버튼 영역) */
+table.enrollment tr:last-child td {
+	background-color: #efeee6;
+	text-align: center;
+	padding: 8px 0;
+}
+
+table.enrollment input[type="submit"] {
+	padding: 3px 14px;
 	font-size: 12px;
 	background-color: #f0f0f0;
 	border: 1px solid #777777;
 	cursor: pointer;
-	맨 아랫줄은 왼쪽/오른쪽 칸 구분 없이 통짜 배경이 되도록 덮어씌움
-	box-shadow: 0 0 0 200px #efeee6;
-	clip-path: inset(-8px -200px -8px -200px);
-} */
-
+}
 
 /* ==========================================
    5. 메뉴등록 확인 (menuInsertProc.jsp - table.certify)

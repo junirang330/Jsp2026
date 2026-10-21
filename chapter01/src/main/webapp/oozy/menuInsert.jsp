@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import  = "java.util.*" %>
+    pageEncoding="UTF-8" import = "java.util.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,11 +18,11 @@
 				<td><label>분류</label></td>
 				<td>
 					<select name = "menuSort">
-						<option value = none>분류</option>
-						<option value = 10>[10]COFFEE</option>
-						<option value = 20>[20]COLD BREW</option>
-						<option value = 30>[30]BEVERAGE</option>
-						<option value = 40>[40]DESSERT</option>
+						<option value = "none">분류</option>
+						<option value = "10">[10]COFFEE</option>
+						<option value = "20">[20]COLD BREW</option>
+						<option value = "30">[30]BEVERAGE</option>
+						<option value = "40">[40]DESSERT</option>
 					</select>
 				</td>
 			</tr>
@@ -32,19 +32,21 @@
 			</tr>
 			<tr>
 				<td><label>판매상태</label></td>
-				<td><input type = "radio" value = "판매중" id = "sale" name ="menuStat"/></td>
+				<td>
+					<input type = "radio" value = "판매중" id = "sale" name ="menuStat"/>
+					<label for="sale">판매중</label>
+					<input type = "radio" value = "SEASON OUT" id = "season_out" name ="menuStat"/>
+					<label for = "season_out">SEASON OUT</label>
+				</td>
 			</tr>
 			<tr>
-				<td><label for="sale">판매중</label></td>
+				<td><label for = "menuDesc">설명</label></td>
 				<td>
-					<input type = "radio" value = "SEASON OUT" id = "season_out" name ="menuStat"/>
-					<label for = "season_out">SEASON OUT</label>  <br/>
-					<label for = "menuDesc">설명</label>
 					<input type = "textarea" id = "menuDesc" name = "menuDesc"/>
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td colspan="2">
 					<!-- 메뉴등록버튼 -->
 					<input type = "submit" value= "enroll"/>
 				</td>

@@ -5,7 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>OOZY COFFEE</title>
-<link rel = "stylesheet" href="css/coffee.css">
+<!-- main.jsp의 head 영역 -->
+<link rel="stylesheet" href="css/coffee.css?v=2">
 </head>
 <body>
 	<%

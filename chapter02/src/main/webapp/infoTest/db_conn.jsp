@@ -27,6 +27,8 @@
 		// 숫자 세자리마다 콤마, 원 표시 출력
 		DecimalFormat df = new DecimalFormat("#,##0");
 		DecimalFormat df02 = new DecimalFormat("￦#,##0");
+		
+		
 	%>
 	
 </body>

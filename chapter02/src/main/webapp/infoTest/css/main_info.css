@@ -79,6 +79,10 @@ table.form th {
 table.form td.btn { text-align: center; }
 table.form input[type="text"] { width: 100px; padding: 2px 4px; }
 table.form .hint { margin-left: 6px; }
+.inputBox{
+	display: center;
+	margin: 0 auto;
+}
 
 /* footer */
 footer {

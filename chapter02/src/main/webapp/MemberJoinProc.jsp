@@ -29,6 +29,9 @@
 		String age = request.getParameter("age");
 		String info = request.getParameter("info");
 		
+		
+		
+		
 		// db 연동 시작 --------------------------------------------------------------
 		
 		Connection con = null;

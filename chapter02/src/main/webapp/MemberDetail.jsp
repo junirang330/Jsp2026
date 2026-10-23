@@ -26,7 +26,6 @@
 		String user = "root";  // DB 계정
 		String password = "1234";  // DB 계정 비밀번호
 	%>	
-		
 		<table width = "700" border = "1">
 			
 			<%
@@ -78,9 +77,16 @@
 					<td>남기는 말</td>
 					<td><%= rs.getString("info") %></td>
 				</tr>
+				<tr align = "center">
+					<td colspan="2" align="center">
+						<button onclick ="location.href='main.jsp?page=MemberUpdateForm&id=<%= rs.getString("id") %>'">회원수정</button>
+						<button onclick ="location.href='main.jsp?page=MemberDeleteForm&id=<%= rs.getString("id") %>'">회원삭제</button>
+						<button onclick ="location.href='main.jsp?page=MemberList'">목록보기</button>
+						<button onclick ="location.href='main.jsp?page=MemberJoin'">회원가입</button>
+					</td>						
+				</tr>
 			</table>
-					<a href = "MemberList.jsp">회원 목록으로</a>
-			
+					<a href = "main.jsp?page=MemberList">회원 목록으로</a>
 			<%
 					}
 				}catch(Exception e){

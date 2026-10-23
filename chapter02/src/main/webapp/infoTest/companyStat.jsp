@@ -8,10 +8,11 @@
 <head>
 <meta charset="UTF-8">
 <title>companyStat</title>
+<link rel ="stylesheet" href="css/main_info.css"/>
 </head>
 <body>
-	<h2>(제조자별) 주행통계</h2>
-	<table>
+	<table class="list">
+	<h3 text-align = "center">(제조자별) 주행통계</h3>
 		<tr>
 			<th>제조사</th>
 			<th>차량수</th>

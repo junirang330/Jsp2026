@@ -64,7 +64,8 @@
 					<td><%= rs.getString("age") %></td>
 					<td><%= rs.getString("info") %></td>
 					<!-- get방식으로 MemberDetail.jsp에 id를 떠넘겨야 한다. -->
-					<td><a href = "MemberDetail.jsp?id=<%= rs.getString("id") %>">상세보기</a></td>
+					<!-- get방식으로 데이터를 넘길때, 조건이 여러개인 경우 : (main.jsp?조건&조건&조건) 방식-->
+					<td><a href = "main.jsp?page=MemberDetail&id=<%= rs.getString("id") %>">상세보기</a></td>
 				</tr>			
 			
 			
@@ -82,7 +83,7 @@
 		
 		</table>
 		
-		<a href = "MemberJoin.jsp">회원가입으로 가지</a>
+		<a href = "main.jsp?page=MemberJoin">회원가입으로 가지</a>
 		
 	
 	

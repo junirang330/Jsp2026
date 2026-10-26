@@ -19,6 +19,7 @@
 		if(rs.next()){
 			nextNo = rs.getInt("cust");			
 		}
+		
 	}catch(Exception e){
 		e.printStackTrace();
 	}finally{

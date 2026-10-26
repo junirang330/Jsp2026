@@ -2,80 +2,71 @@
     pageEncoding="UTF-8" import = "java.util.*" %>
 <%@ page import = "java.sql.*" %>
 <%@ include file = "db_conn.jsp" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>회원 목록 조회</title>
-<link rel = "stylesheet" href = "css/main.css"/>
-</head>
-<body>
-	<%
-		request.setCharacterEncoding("utf-8");
-		
-	%>
-	
-
-	<h2>회원목록조회/수정</h2>
+<jsp:include page="header.jsp" />
+<section>
+	<h2>회원등록조회/수정</h2>
 	<table>
 		<tr>
 			<th>회원번호</th>
 			<th>회원성명</th>
-			<th>전화번호</th>
-			<th>주소</th>
+			<th>회원전화</th>
+			<th>회원주소</th>
 			<th>가입일자</th>
 			<th>고객등급</th>
 			<th>거주지역</th>
 		</tr>
+		<tr>
 		<%
-			try {
-				// 드라이버 로딩
+			String grade = "";
+			String gradeName = "";
+			
+			try{
 				Class.forName(driver);
-				// DB연결
 				con = DriverManager.getConnection(url, user, password);
-				// 가입한 회원 모든 정보 검색 select문 이용
+				
 				String sql = "select * from member_tbl_02";
 				pstmt = con.prepareStatement(sql);
-				// resultSet 객체에 담기 => sql 문의 실험결과를 담는다.
-				rs = pstmt.executeQuery();
-				System.out.println("회원조회시작  -- 1  ");
+				rs = pstmt.executeQuery(); // 지금현재 커서 위치 : 값이 존재하는 부분앞에 위치
+				
+			/* 	System.out.println("====================");
+				System.out.println(rs.getInt("custno")); */
 				
 				while(rs.next()){
-		%>
+					grade = rs.getString("grade");
+					if(grade.equals("A")) gradeName = "VIP";
+					else if(grade.equals("B")) gradeName = "일반";
+					else gradeName = "직원";
+		%>		
+					<!-- 반복문 안에 tr/td 넣기 -->
+					<!-- 회원번호는, 수정화면으로 이동할때, 회원번호를 get방식으로 떠넘겨줘야 한다. -->
+					<!-- get방식 이동할페이지이름 ? 변수 = 필드명 -->
 					<tr>
-						<td><a href ="modForm.jsp"><%= rs.getString("custno") %></a></td>
+						<td><a class = "list" href="modForm.jsp?custno=<%= rs.getInt("custno") %>"><%= rs.getInt("custno")%></a></td>
 						<td><%= rs.getString("custname") %></td>
 						<td><%= rs.getString("phone") %></td>
 						<td><%= rs.getString("address") %></td>
 						<td><%= rs.getString("joindate") %></td>
-						<td><% if(rs.getString("grade").equals("A")){ %>
-									VIP
-							<% }else if(rs.getString("grade").equals("B")){ %>	
-									일반
-							<% }else if(rs.getString("grade").equals("C")){ %>
-									직원
-							<% } %>
-						</td>
+						<td><%= gradeName %></td>
 						<td><%= rs.getString("city") %></td>
-					</tr>		
-					
-					
+					</tr>	
 		<%		}
-			    
-			  } catch (Exception e) {
-			    e.printStackTrace();
-			  } finally {
-			    try {
-			      if (rs != null) rs.close();
-			      if (pstmt != null) pstmt.close();
-			      if (con != null) con.close();
-			    } catch (Exception e) { e.printStackTrace(); }
-			  }
+				
+			}catch(Exception e){
+				
+			}finally{
+				try{
+					if(rs!=null)rs.close();
+					if(con!=null)rs.close();
+					if(pstmt!=null)pstmt.close();
+				}catch(Exception e){e.printStackTrace();}
+			}
 		
 		%>
-		
-		<tr>
-		</tr>
+		</tr>	
 	</table>
-</body>
-</html>
+	
+
+
+</section>
+
+<jsp:include page="footer.jsp" />

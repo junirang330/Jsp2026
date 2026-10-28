@@ -113,4 +113,156 @@ public class MemberDAO {
 		}
 		return m;
 	}
+	
+	// ---- 2026.10.28 DB 쿼리 업데이트 --------------------------------
+	// 메소드 이름 loginCheck()
+	// id, pass select 쿼리문 작성
+	public boolean loginCheck(String id, String pass) {
+		// 리턴할 변수명 지정
+		boolean logChk = false;  // 현재 로그아웃 상태
+		String chkId = "";
+		String chkPass = "";
+			
+		try {
+			// DB연결
+			con = Util.getConnection();
+			String sql = "select id from member where id=? and pass=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pass);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				logChk=true;
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(con!=null)con.close();
+			}catch(Exception e) {e.printStackTrace();}
+		}
+		return logChk;
+	}
+	
+	// ------------------------------------------------------------------------
+	// 이메일 또는 아이디로 회원목록 검색하는 메소드 작성
+	public ArrayList<MemberDTO> searchMember(String searchType, String keyword) {
+		ArrayList<MemberDTO> m = new ArrayList<MemberDTO>();
+		
+		try {
+			// DB연결
+			con = Util.getConnection();
+			// select  * from member where id like '%h%'
+			String sql = "select * from member where " + searchType + " LIKE '%" + keyword +"%'";
+			
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				MemberDTO mdto = new MemberDTO();
+				mdto.setId(rs.getString(1));
+				mdto.setPass(rs.getString(2));
+				mdto.setEmail(rs.getString(3));
+				mdto.setTel(rs.getString(4));
+				mdto.setHobby(rs.getString(5));
+				mdto.setJob(rs.getString(6));
+				mdto.setAge(rs.getString(7));
+				mdto.setInfo(rs.getString(8));
+				// ArrayList에 추가하기
+				m.add(mdto);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(con!=null) con.close();
+			}catch(Exception e) {e.printStackTrace();}
+			
+		}
+		return m; 
+	}
+	
+	// 한 사람의 데이터 정보를 가져오는 메소드
+	public MemberDTO getInfo(String id) {
+		/* String[] arr = new String[6]; */
+		MemberDTO mdto = new MemberDTO();
+		
+		try {
+			// DB연결
+			con = Util.getConnection();
+			// sql문 작성
+			String sql = "select * from member where id=?";
+			// 실행할 쿼리 객체 선언
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			// 쿼리 실행
+			rs = pstmt.executeQuery();
+			// 현재 커서는 앞에 존재하므로, next()로 다음 데이터를 찾아간다.
+			if(rs.next()) {
+				mdto.setId(rs.getString(1));
+				mdto.setPass(rs.getString(2));
+				mdto.setEmail(rs.getString(3));
+				mdto.setTel(rs.getString(4));
+				mdto.setHobby(rs.getString(5));
+				mdto.setJob(rs.getString(6));
+				mdto.setAge(rs.getString(7));
+				mdto.setInfo(rs.getString(8));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try{
+				if(rs!=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(con!=null) con.close();
+			}catch(Exception e) {e.printStackTrace();}
+		}
+		return mdto;
+	}
+	
+	
+	// 한 사람의 데이터만 DB에 저장하는 메소드 작성
+	public void updateMember(MemberDTO mdto) {
+		
+		try {
+			con = Util.getConnection();
+			String sql = "update member set pass=?,email=?,tel=?,"
+					+ "hobby=?,job=?,age=?,info=?  where id = ?;";
+			pstmt = con.prepareStatement(sql);
+			// ? 대입
+			pstmt.setString(1, mdto.getPass());
+			pstmt.setString(2, mdto.getEmail());
+			pstmt.setString(3, mdto.getTel());
+			pstmt.setString(4, mdto.getHobby());
+			pstmt.setString(5, mdto.getJob());
+			pstmt.setString(6, mdto.getAge());
+			pstmt.setString(7, mdto.getInfo());
+			pstmt.setString(8, mdto.getId());
+			
+			// 쿼리실행
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(con!=null)con.close();
+			}catch(Exception e) {e.printStackTrace();}
+		}
+	}
+	
+	
+	
+	
 }
+
+
+
+
+

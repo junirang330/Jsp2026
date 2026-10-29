@@ -23,14 +23,46 @@ public class MyPageUpdate extends HttpServlet {
 	
 	protected void reqPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		// mdto, mdao 인스턴스화
 		MemberDAO mdao = new MemberDAO();
 		MemberDTO mdto = new MemberDTO();
 		
+		// Mypage.jsp에서 input hidden의 value값을 받아옴 
+		String id = request.getParameter("id");
 		
+		// 오류 체크를 위해서, pass도 받아온다
+		String pass = request.getParameter("pass");
+		String passchk = request.getParameter("passchk");
 		
+		// 비밀번호와 비밀번호체크가 다르면, 수정하지 않고, 오류 메시지 띄울 예정
+		// Mypage.do 서블릿에 result = passfail 지정
+		if(!pass.equals(passchk)) {
+			response.sendRedirect("Mypage.do?result=passfail");
+			return;
+		}
 		
+		String[] arr = request.getParameterValues("hobby");
+		String oneHobby = "";
 		
+		if(arr != null) {
+			for(String hob : arr) {
+				oneHobby += hob + " ";
+			}
+		}
+		
+		// 나머지 MemberDTO 가방에 담는다.
+		mdto.setId(id);
+		mdto.setPass(pass);
+		mdto.setEmail(request.getParameter("email"));
+		mdto.setTel(request.getParameter("tel"));
+		mdto.setHobby(request.getParameter("hobby"));
+		mdto.setJob(request.getParameter("job"));
+		mdto.setAge(request.getParameter("age"));
+		mdto.setInfo(request.getParameter("info"));
+		
+		// DAO 업데이트 메소드 실행
+		mdao.updateMember(mdto);
+		
+		response.sendRedirect("Mypage.do?result=ok");
 	}
-	
-
 }

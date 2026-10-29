@@ -186,8 +186,9 @@ public class MemberDAO {
 	}
 	
 	// 한 사람의 데이터 정보를 가져오는 메소드
+	// 한 사람의 모든필드명 리턴하는 메소드 필요
+	// MemberDTO 을 이용해서 => 가방
 	public MemberDTO getInfo(String id) {
-		/* String[] arr = new String[6]; */
 		MemberDTO mdto = new MemberDTO();
 		
 		try {
@@ -197,8 +198,8 @@ public class MemberDAO {
 			String sql = "select * from member where id=?";
 			// 실행할 쿼리 객체 선언
 			pstmt = con.prepareStatement(sql);
+			// ? 대입 => ?란 DB에 들어가는 값을 말한다.
 			pstmt.setString(1, id);
-			
 			// 쿼리 실행
 			rs = pstmt.executeQuery();
 			// 현재 커서는 앞에 존재하므로, next()로 다음 데이터를 찾아간다.
@@ -224,16 +225,18 @@ public class MemberDAO {
 		return mdto;
 	}
 	
-	
-	// 한 사람의 데이터만 DB에 저장하는 메소드 작성
+	// 업데이트 DAO ----------------------------------------------------
+	// 매개변수 값으로, 가방인 MemberDTO 사용한다.
 	public void updateMember(MemberDTO mdto) {
 		
 		try {
+			// DB연결
 			con = Util.getConnection();
-			String sql = "update member set pass=?,email=?,tel=?,"
-					+ "hobby=?,job=?,age=?,info=?  where id = ?;";
+			// sql문 작성
+			String sql = "update member set pass=?, email=?, tel=?, hobby=?, job=?, age=?, info=? where id=?";
+			// 실행할 쿼리 객체 선언
 			pstmt = con.prepareStatement(sql);
-			// ? 대입
+			// ? 대입 => ?란 DB에 들어가는 값을 말한다.
 			pstmt.setString(1, mdto.getPass());
 			pstmt.setString(2, mdto.getEmail());
 			pstmt.setString(3, mdto.getTel());
@@ -242,23 +245,20 @@ public class MemberDAO {
 			pstmt.setString(6, mdto.getAge());
 			pstmt.setString(7, mdto.getInfo());
 			pstmt.setString(8, mdto.getId());
-			
-			// 쿼리실행
+			// 쿼리 실행 (rs 사용하지 않음)
 			pstmt.executeUpdate();
 			
+			System.out.println(pstmt.executeUpdate());
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
-			try {
-				if(rs!=null)rs.close();
-				if(pstmt!=null)pstmt.close();
-				if(con!=null)con.close();
+			try{
+				if(rs!=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(con!=null) con.close();
 			}catch(Exception e) {e.printStackTrace();}
 		}
 	}
-	
-	
-	
 	
 }
 

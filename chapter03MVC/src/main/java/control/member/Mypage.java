@@ -32,23 +32,27 @@ public class Mypage extends HttpServlet {
 		// 세션이 null 이 아니면 로그인상태로, null이 아닐때, id값을 session.getAttribute("id")로 받아온다.
 		
 		request.setCharacterEncoding("utf-8");
-
-		HttpSession session = request.getSession();
 		
+		// request.getSession(false) : 만약 세션이 존재하면 가져오고, 없으면 새로만들지 않고 null로 가져온다(리턴).
+		HttpSession session = request.getSession(false);
+
+		// 로그인 된 아이디
+		String id = (String) session.getAttribute("id");
 		MemberDAO mdao = new MemberDAO();
-		System.out.println("1번");
+		MemberDTO mdto = new MemberDTO();
 		
+		// 조건 : session이 null이 아닌 경우 : 로그인 상태
 		if(session != null) {
-			String id = (String) session.getAttribute("id");
-			MemberDTO mdto = mdao.getInfo(id);
-			request.setAttribute("mdto", mdto);
-			System.out.println(mdto.getId());
-
+			mdto = mdao.getInfo(id);
 		}
-		
-		
+		// mdto 가방에 담은 값들을 jsp view단으로 넘길때는 setAttribute("작명", 값)에 담는다.
+		request.setAttribute("mdto", mdto);
 		RequestDispatcher rd = request.getRequestDispatcher("/index.jsp?section=member/Mypage.jsp");
+		// select문을 제외한 나머지 쿼리문 작성시, 
+		// f5로 새로고침 시 화면이 다시 화면이 재요청이 되는 현상
 		rd.forward(request, response);
+
+		
 	}
 
 }

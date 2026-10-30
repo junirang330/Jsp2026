@@ -1,0 +1,320 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+
+     <!-- 섹션(상) : 추천숙소(평점순) -> 클릭하면 "해당숙소" 페이지 이동 -->
+    <div class="section_top">
+        <p>추천 숙소</p>
+        <div class="group recommend">
+            <!-- 추천숙소 첫번째 행 -->
+            <div class="rec_row">
+            	<!-- 첫번째 카드 -->
+            	<div class="rec_card">
+            		<a href="">
+		                <!-- 이미지 박스-->
+		                <div class="imgbox">
+		                    <img src="#" alt="추천숙소1"/>
+		                    <!-- 이미지 안에 배지(평점) -->
+		                    <div class="badgeLike_box">
+		                        <span class="badge_like">★4.9</span>
+		                    </div>
+		                </div>
+		                <!-- 숙소구분(호텔/모텔/펜션) -->
+		                <p class="acc_cate">호텔</p>
+		                <p class="acc_name">세인트존호텔</p>
+		                <p class="acc_city">여수</p>
+            		</a>
+            	</div>
+            	<!-- 두번째 카드 -->
+            	<div class="rec_card">
+            		<a href="">
+		                <!-- 이미지 박스-->
+		                <div class="imgbox">
+		                    <img src="#" alt="추천숙소2"/>
+		                    <!-- 이미지 안에 배지(평점) -->
+		                    <div class="badgeLike_box">
+		                        <span class="badge_like">★4.9</span>
+		                    </div>
+		                </div>
+		                <!-- 숙소구분(호텔/모텔/펜션) -->
+		                <p class="acc_cate">호텔</p>
+		                <p class="acc_name">스카이호텔</p>
+		                <p class="acc_city">부산</p>
+            		</a>
+            	</div>
+            	<!-- 세번째 카드 -->
+            	<div class="rec_card">
+            		<a href="">
+		                <!-- 이미지 박스-->
+		                <div class="imgbox">
+		                    <img src="#" alt="추천숙소3"/>
+		                    <!-- 이미지 안에 배지(평점) -->
+		                    <div class="badgeLike_box">
+		                        <span class="badge_like">★4.8</span>
+		                    </div>
+		                </div>
+		                <!-- 숙소구분(호텔/모텔/펜션) -->
+		                <p class="acc_cate">호텔</p>
+		                <p class="acc_name">오소한옥스테이</p>
+		                <p class="acc_city">경주</p>
+            		</a>
+            	</div>
+            	<!-- 네번째 카드 -->
+            	<div class="rec_card">
+            		<a href="">
+		                <!-- 이미지 박스-->
+		                <div class="imgbox">
+		                    <img src="#" alt="추천숙소4"/>
+		                    <!-- 이미지 안에 배지(평점) -->
+		                    <div class="badgeLike_box">
+		                        <span class="badge_like">★4.8</span>
+		                    </div>
+		                </div>
+		                <!-- 숙소구분(호텔/모텔/펜션) -->
+		                <p class="acc_cate">펜션</p>
+		                <p class="acc_name">더포그레이스</p>
+		                <p class="acc_city">제주도</p>
+            		</a>
+            	</div>
+            </div>
+            <!-- 추천숙소 두번째 행 -->
+            <div class="rec_row">
+            	<!-- 다섯번째 카드 -->
+            	<div class="rec_card">
+            		<a href="">
+		                <!-- 이미지 박스-->
+		                <div class="imgbox">
+		                    <img src="#" alt="추천숙소5"/>
+		                    <!-- 이미지 안에 배지(평점) -->
+		                    <div class="badgeLike_box">
+		                        <span class="badge_like">★4.7</span>
+		                    </div>
+		                </div>
+		                <!-- 숙소구분(호텔/모텔/펜션) -->
+		                <p class="acc_cate">모텔</p>
+		                <p class="acc_name">서머셋호텔</p>
+		                <p class="acc_city">평창</p>
+            		</a>
+            	</div>
+            	<!-- 여섯번째 카드 -->
+            	<div class="rec_card">
+            		<a href="">
+		                <!-- 이미지 박스-->
+		                <div class="imgbox">
+		                    <img src="#" alt="추천숙소6"/>
+		                    <!-- 이미지 안에 배지(평점) -->
+		                    <div class="badgeLike_box">
+		                        <span class="badge_like">★4.6</span>
+		                    </div>
+		                </div>
+		                <!-- 숙소구분(호텔/모텔/펜션) -->
+		                <p class="acc_cate">모텔</p>
+		                <p class="acc_name">글로스터호텔</p>
+		                <p class="acc_city">평창</p>
+            		</a>
+            	</div>
+            	<!-- 일곱번째 카드 -->
+            	<div class="rec_card">
+            		<a href="">
+		                <!-- 이미지 박스-->
+		                <div class="imgbox">
+		                    <img src="#" alt="추천숙소7"/>
+		                    <!-- 이미지 안에 배지(평점) -->
+		                    <div class="badgeLike_box">
+		                        <span class="badge_like">★4.5</span>
+		                    </div>
+		                </div>
+		                <!-- 숙소구분(호텔/모텔/펜션) -->
+		                <p class="acc_cate">호텔</p>
+		                <p class="acc_name">히든클리프 호텔</p>
+		                <p class="acc_city">안동</p>
+            		</a>
+            	</div>
+            	<!-- 여덟번째 카드 -->
+            	<div class="rec_card">
+            		<a href="">
+		                <!-- 이미지 박스-->
+		                <div class="imgbox">
+		                    <img src="#" alt="추천숙소8"/>
+		                    <!-- 이미지 안에 배지(평점) -->
+		                    <div class="badgeLike_box">
+		                        <span class="badge_like">★4.4</span>
+		                    </div>
+		                </div>
+		                <!-- 숙소구분(호텔/모텔/펜션) -->
+		                <p class="acc_cate">펜션</p>
+		                <p class="acc_name">에벤에셀</p>
+		                <p class="acc_city">태안</p>
+            		</a>
+            	</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 섹션(중) : 이달의 여행지 -> 클릭하면 "지역숙소 검색" 페이지 이동 -->
+    <div class="section_middle">
+        <p>이달의 여행지</p>
+        <div class="monthRegion">
+       		<!-- 첫번째 카드(지역) -->
+       		<div class="month_card">
+       			<a href="#">
+       				<img src="#" alt="이달의 지역1"/>
+       			</a>
+       		</div>
+       		<!-- 두번째 카드(지역) -->
+       		<div class="month_card">
+       			<a href="#">
+       				<img src="#" alt="이달의 지역1"/>
+       			</a>
+       		</div>
+       		<!-- 세번째 카드(지역) -->
+			<div class="month_card">
+       			<a href="#">
+       				<img src="#" alt="이달의 지역1"/>
+       			</a>
+       		</div>       		
+       		<!-- 네번째 카드(지역) -->
+        	<div class="month_card">
+       			<a href="#">
+       				<img src="#" alt="이달의 지역1"/>
+       			</a>
+       		</div>
+        	<!-- 다섯번째 카드(지역) -->
+        	<div class="month_card">
+       			<a href="#">
+       				<img src="#" alt="이달의 지역5"/>
+       			</a>
+       		</div>
+        	<!-- 여섯째 카드(지역) -->
+        	<div class="month_card">
+       			<a href="#">
+       				<img src="#" alt="이달의 지역6"/>
+       			</a>
+       		</div>
+        </div>
+    </div>
+
+    <!-- 섹션(하) : 랜덤 리뷰 -> 클릭하면 "해당숙소" 페이지 이동 -->
+    <div class="section_bottom">
+        <p>리뷰</p>
+		<!-- 추천숙소 첫번째 행 -->
+            <div class="rev_row">
+            	<!-- 첫번째 카드 -->
+            	<div class="rev_card">
+            		<a href="">
+		                <!-- 이미지 박스-->
+		                <div class="rev_imgbox">
+		                    <img src="#" alt="리뷰1"/>
+		                    <!-- 이미지 안에 배지(평점) -->
+		                    <div class="badgereview_box">
+		                    	<span class="badge_review">★4.9</span>
+		                        <span class="badge_review">창문 열자마자 펼쳐지는 오션뷰에 반했어요</span>
+		                    </div>
+		                </div>
+            		</a>
+            	</div>
+            	<!-- 두번째 카드 -->
+            	<div class="rev_card">
+            		<a href="">
+		                <!-- 이미지 박스-->
+		                <div class="rev_imgbox">
+		                    <img src="#" alt="리뷰2"/>
+		                    <!-- 이미지 안에 배지(평점) -->
+		                    <div class="badgereview_box">
+		                    	<span class="badge_review">★4.8</span>
+		                        <span class="badge_review">광안대교 야경 보며 잠드는 완벽한 하루</span>
+		                    </div>
+		                </div>
+            		</a>
+            	</div>
+            	<!-- 세번째 카드 -->
+            	<div class="rev_card">
+            		<a href="">
+		                <!-- 이미지 박스-->
+		                <div class="rev_imgbox">
+		                    <img src="#" alt="리뷰3"/>
+		                    <!-- 이미지 안에 배지(평점) -->
+		                    <div class="badgereview_box">
+		                    	<span class="badge_review">★4.8</span>
+		                        <span class="badge_review">고즈넉한 한옥에서 제대로 힐링하고 갑니다</span>
+		                    </div>
+		                </div>
+            		</a>
+            	</div>
+            	<!-- 네번째 카드 -->
+            	<div class="rev_card">
+            		<a href="">
+		                <!-- 이미지 박스-->
+		                <div class="rev_imgbox">
+		                    <img src="#" alt="리뷰4"/>
+		                    <!-- 이미지 안에 배지(평점) -->
+		                    <div class="badgereview_box">
+		                    	<span class="badge_review">★4.7</span>
+		                        <span class="badge_review">침구류가 너무 폭신해서 꿀잠 잤어요</span>
+		                    </div>
+		                </div>
+            		</a>
+            	</div>
+            </div>
+            <!-- 추천숙소 두번째 행 -->
+            <div class="rev_row">
+            	<!-- 다섯번째 카드 -->
+            	<div class="rev_card">
+            		<a href="">
+		                <!-- 이미지 박스-->
+		                <div class="rev_imgbox">
+		                    <img src="#" alt="추천숙소5"/>
+		                    <!-- 이미지 안에 배지(평점) -->
+		                    <div class="badgereview_box">
+		                    	<span class="badge_review">★4.7</span>
+		                        <span class="badge_review">공기도 맑고 객실 컨디션이 정말 최고예요</span>
+		                    </div>
+		                </div>
+            		</a>
+            	</div>
+            	<!-- 여섯번째 카드 -->
+            	<div class="rev_card">
+            		<a href="">
+		                <!-- 이미지 박스-->
+		                <div class="rev_imgbox">
+		                    <img src="#" alt="추천숙소6"/>
+		                    <!-- 이미지 안에 배지(평점) -->
+		                    <div class="badgereview_box">
+		                    	<span class="badge_review">★4.6</span>
+		                        <span class="badge_review">가성비 최고! 깔끔해서 다음에도 또 올게요</span>
+		                    </div>
+		                </div>
+            		</a>
+            	</div>
+            	<!-- 일곱번째 카드 -->
+            	<div class="rev_card">
+            		<a href="">
+		                <!-- 이미지 박스-->
+		                <div class="rev_imgbox">
+		                    <img src="#" alt="추천숙소7"/>
+		                    <!-- 이미지 안에 배지(평점) -->
+		                    <div class="badgereview_box">
+		                    	<span class="badge_review">★4.5</span>
+		                        <span class="badge_review">숲속 인피니티 풀, 인생샷 건지기 딱 좋아요</span>
+		                    </div>
+		                </div>
+            		</a>
+            	</div>
+            	<!-- 여덟번째 카드 -->
+            	<div class="rev_card">
+            		<a href="">
+		                <!-- 이미지 박스-->
+		                <div class="rev_imgbox">
+		                    <img src="#" alt="추천숙소8"/>
+		                    <!-- 이미지 안에 배지(평점) -->
+		                    <div class="badgereview_box">
+		                    	<span class="badge_review">★4.4</span>
+		                        <span class="badge_review">노을 지는 바닷가 산책로가 예술이네요</span>
+		                    </div>
+		                </div>
+            		</a>
+            	</div>
+            </div>
+        </div>
+    </div>
+    

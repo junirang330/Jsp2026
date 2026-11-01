@@ -12,7 +12,7 @@
 <body>
 
 	<%
-		request.getParameter("utf-8");
+		request.setCharacterEncoding("utf-8");
 	%>
 	<h2>홈쇼핑 회원등록</h2>
 	<form name = "join" action = "joinProc.jsp" method = "post" >

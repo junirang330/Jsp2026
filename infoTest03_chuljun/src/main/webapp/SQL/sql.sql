@@ -1,4 +1,4 @@
-create schema infoTest03 default character set utf8mb4 collate utf8mb4_general_ci;
+create schema jspdb default character set utf8mb4 collate utf8mb4_general_ci;
 -- 테이블 생성 --
 create table TBL_TEACHER_202201(
 TEACHER_CODE char(3) primary key,
@@ -45,3 +45,35 @@ insert into TBL_CLASS_202201 values
 ('202203', '10003', '대전분원', 200000, '200'),
 ('202203', '20001', '부산분원', 150000, '300'),
 ('202203', '20002', '대구분원', 200000, '400');
+
+-- 강사 조회 --
+select * from TBL_TEACHER_202201;
+select * from TBL_CLASS_202201;
+select * from TBL_MEMBER_202201;
+
+-- 정보 지우기 --  
+delete from TBL_CLASS_202201 where C_NO ='10006';
+
+-- 강사 매출 조회 --
+select t.TEACHER_CODE, t.CLASS_NAME, t.TEACHER_NAME, sum(c.TUITION) from TBL_TEACHER_202201 t 
+inner join TBL_CLASS_202201 c 
+on t.TEACHER_CODE = c.TEACHER_CODE
+group by t.TEACHER_CODE;
+-- 수강신청 조회 --
+select c.REGIST_MONTH, m.C_NAME, c.C_NO, c.CLASS_AREA, t.CLASS_NAME, c.TUITION 
+from TBL_CLASS_202201 c 
+inner join TBL_MEMBER_202201 m on c.C_NO = m.C_NO 
+inner join TBL_TEACHER_202201 t on t.TEACHER_CODE = c.TEACHER_CODE;
+
+-- 수강신청 : 콤보박스 (회원정보 / 강사정보 참조) --
+-- select m.C_NAME, t.CLASS_NAME from TBL_MEMBER_202201 m inner join TBL_CLASS_202201 c --
+-- on m.C_NO = c.C_NO inner join TBL_TEACHER_202201 t on c.TEACHER_CODE = t.TEACHER_CODE; --
+select C_NAME from TBL_MEMBER_202201;
+select CLASS_NAME from TBL_TEACHER_202201;
+
+-- 회원정보조회 쿼리문 --
+select c.REGIST_MONTH, m.C_NO, m.C_NAME, t.CLASS_NAME, c.CLASS_AREA, c.TUITION, m.GRADE from TBL_MEMBER_202201 m inner join TBL_CLASS_202201 c 
+on m.C_NO = c.C_NO inner join TBL_TEACHER_202201 t on c.TEACHER_CODE = t.TEACHER_CODE; 
+
+-- 회원번호 출력 쿼리문 --
+select C_NO from tbl_member_202201 where C_NAME = '장발장';

@@ -260,7 +260,44 @@ public class MemberDAO {
 		}
 	}
 	
+	// ------------------------------------------------
+	// 모든 상품 리턴
+	// 메소드 이름 : getAllProduct()
+	public ArrayList<CarDTO> getAllProduct() {
+		
+		// 리턴 타입문을 선언한다.
+		ArrayList<CarDTO> c = new ArrayList<CarDTO>();
+		
+		try {
+			con = Util.getConnection();
+			String sql = "select * from carproduct";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				CarDTO cdto = new CarDTO();
+				cdto.setNo(rs.getInt(1));
+				cdto.setCarName(rs.getString(2));
+				cdto.setPrice(rs.getInt(3));
+				cdto.setCompany(rs.getString(4));
+				cdto.setImg(rs.getString(5));
+				cdto.setInfo(rs.getString(6));
+				// ArrayList에 추가하기
+				c.add(cdto);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(con!=null)con.close();
+			}catch(Exception e) {e.printStackTrace();}
+		}
+		return c;
+	}
+	
 }
+
 
 
 
